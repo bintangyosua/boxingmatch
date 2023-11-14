@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  height: 100vh;
+  color: white;
+}
+
+a {
+  all: unset;
+}
+
+button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.nav {
+  background-color: #ea3a3a;
+  font-size: smaller;
+  padding: 5px 0 25px 0;
+  /* display: flex; */
+  /* justify-content: center; */
+  height: 3%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  max-width: 1000px;
+}
+
+.galang-boxing {
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
+
+.nav-items {
+  text-decoration: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.nav-items > * + * {
+  margin-left: 10px;
+}
+
+.nav-items .logout {
+  background-color: #112e41;
+  color: white;
+}
+
+.bg-img {
+  display: grid;
+  place-items: center;
+  height: 92.6%;
+  background-color: black;
+  width: auto;
+  position: relative;
+  isolation: isolate;
+}
+
+.bg-img::after {
+  content: "";
+
+  background-image: url("../images/profile-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.profile {
+  background-color: #a22a2a;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 20px;
+  opacity: 0.9;
+  width: 300px;
+}
+
+.profile img {
+  border-radius: 100%;
+  height: 70px;
+  width: 70px;
+}
+
+.profile h2 {
+  font-weight: lighter;
+}
+
+.profile table,
+.profile tr,
+.profile td {
+  padding: 5px;
+  border: none;
+  border-collapse: collapse;
+  font-weight: 600;
+}
+
+.profile button {
+  color: white;
+  border: none;
+}
+
+.profile .edit {
+  background-color: #d17a22;
+  margin-right: 15px;
+}
+
+.profile .hapus {
+  background-color: #d83939;
+  margin-left: 15px;
+}
+
+/* @media (min-width: 540px) {
+  .nav {
+    padding: 10px 30px;
+  }
+}
+
+@media (min-width: 720px) {
+  .nav {
+    padding: 10px 140px;
+  }
+} */
