@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profile</title>
   <link rel="stylesheet" href="./assets/styles/style.css">
+  <link rel="stylesheet" href="./assets/styles/profile.css">
 </head>
 
 <body>
   <?php include "./components/Navbar.php" ?>
   <div class="bg-img">
-    <div class="profile">
-      <img src="./assets/images/00-intro-1965-muhammad-ali-sonny-liston-001292890jpg.jpg" alt="" class="profile-img">
+    <div class="card">
+      <img src="./assets/images/profile.jpeg" alt="" class="card-img">
       <h2 class="profile-name">Gilang</h2>
       <table>
         <tr>
