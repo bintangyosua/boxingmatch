@@ -6,8 +6,7 @@
 
 - Figma
 - VSCode
-- XAMPP
-- Laragon
+- XAMPP/Laragon
 - MYSQL
 - PHP
 - HTML/CSS
