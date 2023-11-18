@@ -36,8 +36,6 @@
         <button class="edit">edit profile</button>
         <button class="hapus">hapus akun</button>
       </div>
-      <!-- <img src="./assets/images/sports Color Palette - color-hex.com.png" alt=""> -->
-      <!-- <img src="./assets\images\Sports Experience Color Palette - color-hex.com.png" alt=""> -->
     </div>
   </div>
 </body>
