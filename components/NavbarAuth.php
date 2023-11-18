@@ -1,8 +1,10 @@
 <style>
     .nav {
         font-size: large;
-        padding: 10px 0 25px 0;
+        padding: 20px 0;
         height: 3%;
+        display: grid;
+        place-items: center;
     }
 
     .nav-container {
@@ -10,8 +12,9 @@
         justify-content: space-between;
         align-items: center;
         margin: auto;
-        padding: 20px 0;
+        padding: 0 5px;
         max-width: 1000px;
+        width: 95%;
     }
 
     .galang-boxing {

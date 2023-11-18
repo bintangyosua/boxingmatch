@@ -16,7 +16,7 @@ body {
 body::after {
   content: "";
 
-  background-image: url("../images/main-bg.jpg");
+  background-image: url("/images/main-bg.jpg");
   background-size: cover;
   background-position: center;
   filter: grayscale(100%);
@@ -60,6 +60,8 @@ input[type="text"] {
   font-weight: 600;
 }
 
-.input-field td > input[type="text"] {
-  width: 330px;
+.input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

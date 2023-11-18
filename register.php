@@ -16,25 +16,55 @@
             <h1>REGISTRASI</h1>
             <hr />
             <div class="input-field">
-                <table>
-                    <tr>
-                        <td></td>
-                        <td><label for="name">Your Name</label></td>
-                        <td>:</td>
-                        <td>
-                            <div style="display: flex;">
-                                <input type="text" name="" id="name">
-                                <input type="text" name="">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label for="username">Username</label></td>
-                        <td>:</td>
-                        <td><input type="text" name="username" id="username"></td>
-                    </tr>
-                </table>
+                <div class="input-row">
+                    <div class="input-label">
+                        <span>
+                            <img src="./assets/images/svgs/profile.svg" width="20px" alt="">
+                            <span>Your name</span>
+                        </span>
+                        <span>:</span>
+                    </div>
+                    <div class="input-data">
+                        <input type="text" name="" id="" placeholder="First Name">
+                        <input type="text" name="" id="" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-label">
+                        <span>
+                            <img src="./assets/images/svgs/username.svg" width="20px" alt="">
+                            <span>Username</span>
+                        </span>
+                        <span>:</span>
+                    </div>
+                    <div>
+                        <input type="text" name="" id="" placeholder="Input username">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-label">
+                        <span>
+                            <img src="./assets/images/svgs/email.svg" width="20px" alt="">
+                            <span>Email</span>
+                        </span>
+                        <span>:</span>
+                    </div>
+                    <div>
+                        <input type="text" name="" id="" placeholder="Input email">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-label">
+                        <span>
+                            <img src="./assets/images/svgs/password.svg" width="20px" alt="">
+                            <span>Password</span>
+                        </span>
+                        <span>:</span>
+                    </div>
+                    <div>
+                        <input type="text" name="" id="" placeholder="Input password">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
