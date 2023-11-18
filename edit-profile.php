@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include "./components/NavbarAuth.php" ?>
+    <?php include "./components/Navbar.php" ?>
     <section class="main">
         <div class="card">
             <h1>Edit Profile</h1>
