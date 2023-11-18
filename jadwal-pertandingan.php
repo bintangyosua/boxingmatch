@@ -49,8 +49,7 @@
                         </div>
                     </div>
                 </div>
-
-                <?php } ?>?>
+            <?php } ?>
         </div>
     </section>
     <footer>

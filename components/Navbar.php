@@ -63,7 +63,7 @@
             <img src="./assets/images/galang-boxing.png" class="galang-boxing" alt="">
         </div>
         <div class="nav-items">
-            <a href="dashboard.php" class="nav-item">
+            <a href="index.php" class="nav-item">
                 <img src="./assets/images/svgs/home.svg" width="24px" class="logo" alt="">
                 <span>Home</span>
             </a>
