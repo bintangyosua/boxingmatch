@@ -31,7 +31,8 @@
   gap: 20px;
   border-radius: 20px;
   opacity: 0.9;
-  width: 300px;
+  max-width: 600px;
+  width: 80%;
 }
 
 .card img {
@@ -56,6 +57,8 @@
 .card button {
   color: white;
   border: none;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .card .edit {
@@ -66,6 +69,32 @@
 .card .hapus {
   background-color: #d83939;
   margin-left: 15px;
+}
+
+.main-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 60%;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 550;
+    margin-bottom: 10px;
+
+    .label {
+      width: 35%;
+      margin-bottom: 10px;
+    }
+
+    .value {
+      width: 60%;
+    }
+  }
 }
 
 /* @media (min-width: 540px) {

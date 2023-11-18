@@ -15,26 +15,31 @@
     <div class="card">
       <img src="./assets/images/profile.jpeg" alt="" class="card-img">
       <h2 class="profile-name">Gilang</h2>
-      <table>
-        <tr>
-          <td>Username</td>
-          <td>:</td>
-          <td>gilanggg</td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td>:</td>
-          <td>gilang@gg.com</td>
-        </tr>
-        <tr>
-          <td>Password</td>
-          <td>:</td>
-          <td>********</td>
-        </tr>
-      </table>
+      <div class="main-card">
+        <div class="row">
+          <div class="label">Username</div>
+          <div>:</div>
+          <div class="value">gilanggg</div>
+        </div>
+        <div class="row">
+          <div class="label">Email</div>
+          <div>:</div>
+          <div class="value">gilang@gg.com</div>
+        </div>
+        <div class="row">
+          <div class="label">Password</div>
+          <div>:</div>
+          <div class="value">********</div>
+        </div>
+      </div>
+
       <div class="buttons">
-        <button class="edit">edit profile</button>
-        <button class="hapus">hapus akun</button>
+        <a href="edit-profile.php" style="cursor: pointer;">
+          <button class="edit">edit profile</button>
+        </a>
+        <a href="#">
+          <button class="hapus">hapus akun</button>
+        </a>
       </div>
     </div>
   </div>

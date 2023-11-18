@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/auth.css">
 </head>
@@ -13,22 +13,9 @@
     <?php include "./components/NavbarAuth.php" ?>
     <section class="main">
         <div class="card">
-            <h1>REGISTRASI</h1>
+            <h1>LOGIN</h1>
             <hr />
             <div class="input-field">
-                <div class="input-row">
-                    <div class="input-label">
-                        <span>
-                            <img src="./assets/images/svgs/profile.svg" width="20px" alt="">
-                            <span>Your name</span>
-                        </span>
-                    </div>
-                    <div class="input-colon">:</div>
-                    <div class="input-data input-data-name">
-                        <input type="text" name="" id="" placeholder="First Name">
-                        <input type="text" name="" id="" placeholder="Last Name">
-                    </div>
-                </div>
                 <div class="input-row">
                     <div class="input-label">
                         <span>
@@ -44,18 +31,6 @@
                 <div class="input-row">
                     <div class="input-label">
                         <span>
-                            <img src="./assets/images/svgs/email.svg" width="20px" alt="">
-                            <span>Email</span>
-                        </span>
-                    </div>
-                    <div class="input-colon">:</div>
-                    <div class="input-data">
-                        <input type="text" name="" id="" placeholder="Input email">
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-label">
-                        <span>
                             <img src="./assets/images/svgs/password.svg" width="20px" alt="">
                             <span>Password</span>
                         </span>
@@ -63,15 +38,16 @@
                     <div class="input-colon">:</div>
                     <div class="input-data input-data-password">
                         <input type="text" name="" id="" placeholder="Input password">
-                        <input type="text" name="" id="" placeholder="Confirm your password">
                     </div>
                 </div>
                 <div class="input-row submit">
-                    <button>Register</button>
+                    <hr>
+                    <button>Login</button>
+                    <hr>
                 </div>
             </div>
         </div>
-        <div>Sudah punya akun? <a href="login.php"><b>Masuk Disini !</b></a></div>
+        <div>Belum punya akun? <a href="register.php"><b>Daftar Disini !</b></a></div>
     </section>
 </body>
 
