@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Edit Profile</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/auth.css">
 </head>
@@ -13,7 +13,7 @@
     <?php include "./components/NavbarAuth.php" ?>
     <section class="main">
         <div class="card">
-            <h1>REGISTRASI</h1>
+            <h1>Edit Profile</h1>
             <hr />
             <div class="input-field">
                 <div class="input-row">
@@ -67,11 +67,10 @@
                     </div>
                 </div>
                 <div class="input-row submit">
-                    <button>Register</button>
+                    <button>Simpan</button>
                 </div>
             </div>
         </div>
-        <div>Sudah punya akun? <a href="login.php"><b>Masuk Disini !</b></a></div>
     </section>
 </body>
 
