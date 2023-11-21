@@ -60,7 +60,9 @@
 <nav class="nav">
     <div class="nav-container">
         <div>
-            <img src="./assets/images/galang-boxing.png" class="galang-boxing" alt="">
+            <a href="index.php">
+                <img src="./assets/images/galang-boxing.png" class="galang-boxing" alt="">
+            </a>
         </div>
         <div class="nav-items">
             <a href="index.php" class="nav-item">
@@ -75,8 +77,8 @@
                 <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
                 <span>User</span>
             </a>
-            <a href="#"><button class="login">Login</button></a>
-            <a href="#"><button class="logout">Logout</button></a>
+            <a href="login.php"><button class="login">Login</button></a>
+            <a href="logout.php"><button class="logout">Logout</button></a>
         </div>
 
     </div>

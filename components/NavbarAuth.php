@@ -41,7 +41,9 @@
 <nav class="nav">
     <div class="nav-container">
         <div>
-            <img src="./assets/images/galang-boxing.png" class="galang-boxing" alt="">
+            <a href="index.php">
+                <img src="./assets/images/galang-boxing.png" class="galang-boxing" alt="">
+            </a>
         </div>
     </div>
 </nav>
