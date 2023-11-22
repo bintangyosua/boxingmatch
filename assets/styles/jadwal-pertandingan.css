@@ -25,7 +25,7 @@ body {
 .background-hero:after {
   content: "";
 
-  background-image: url("../images/fierro-zamarripa15092023_1bv80h0a6k2xc1us8jvy5fy9ms.jpg");
+  background-image: url("../images/bg3.jpg");
   background-size: auto cover;
   object-fit: cover;
   filter: grayscale(100);

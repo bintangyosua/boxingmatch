@@ -21,7 +21,7 @@
 ## TODO:
 
 1. Bikin animasi dan transisi background di halaman login, register, index,
-2. Tambah teks di halaman index
+2. Tambah teks di halaman index ✅
 3. Tambah Gambar di halaman index
 4. Benerin posisi gambar di schedules
 5. Tambah animasi home

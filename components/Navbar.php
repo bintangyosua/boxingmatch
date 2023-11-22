@@ -77,6 +77,10 @@
                 <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
                 <span>User</span>
             </a>
+            <a href="admin-jadwal.php" class="nav-item">
+                <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
+                <span>Admin</span>
+            </a>
             <a href="login.php"><button class="login">Login</button></a>
             <a href="logout.php"><button class="logout">Logout</button></a>
         </div>

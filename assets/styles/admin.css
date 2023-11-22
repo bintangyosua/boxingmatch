@@ -1,0 +1,101 @@
+body {
+  background-image: url("../images/bg2-grayscale.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+a {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.card {
+  height: fit-content;
+  width: max-content;
+  background-color: #cd2e2e;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0.9;
+}
+
+.new-schedule {
+  display: inline-flex;
+  background-color: green;
+  width: fit-content;
+}
+
+.back-schedules {
+  display: inline-flex;
+  background-color: teal;
+  width: fit-content;
+}
+
+.schedules {
+  width: 100%;
+}
+
+.schedules,
+thead,
+tbody,
+tr,
+th,
+td {
+  padding: 10px 15px;
+  border-collapse: collapse;
+  border: solid white 1px;
+  text-align: center;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 5px 10px;
+}
+
+.btn-edit {
+  background-color: green;
+}
+
+.btn-delete {
+  background-color: red;
+}
+
+.f-actions {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & label {
+    width: 25%;
+  }
+
+  & input {
+    width: 70%;
+  }
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+}
