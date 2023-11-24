@@ -1,3 +1,8 @@
+<?php
+include_once "./koneksi.php";
+include_once "./auth.php";
+?>
+
 <style>
     .nav {
         background-color: #ea3a3a;
@@ -56,7 +61,6 @@
         color: white;
     }
 </style>
-
 <nav class="nav">
     <div class="nav-container">
         <div>
@@ -73,16 +77,23 @@
                 <img src="./assets/images/svgs/calendar.svg" width="24px" class="logo" alt="">
                 <span>Jadwal Pertandingan</span>
             </a>
-            <a href="profile.php" class="nav-item">
-                <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
-                <span>User</span>
-            </a>
-            <a href="admin-jadwal.php" class="nav-item">
-                <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
-                <span>Admin</span>
-            </a>
-            <a href="login.php"><button class="login">Login</button></a>
-            <a href="logout.php"><button class="logout">Logout</button></a>
+            <?php if (isLoggedIn()) : ?>
+                <a href="profile.php" class="nav-item">
+                    <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
+                    <span>User</span>
+                </a>
+            <?php endif ?>
+            <?php if (isAdmin()) : ?>
+                <a href="admin-jadwal.php" class="nav-item">
+                    <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
+                    <span>Admin</span>
+                </a>
+            <?php endif ?>
+            <?php if (!isLoggedIn()) : ?>
+                <a href="login.php"><button class="login">Login</button></a>
+            <?php else : ?>
+                <a href="logout.php"><button class="logout">Logout</button></a>
+            <?php endif ?>
         </div>
 
     </div>
