@@ -2,6 +2,8 @@
 require_once "auth.php";
 
 if (!isAdmin()) header("Location: index.php");
+
+$res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
 ?>
 
 <!DOCTYPE html>
@@ -36,32 +38,50 @@ if (!isAdmin()) header("Location: index.php");
                             <th>#</th>
                             <th>Player 1</th>
                             <th>Player 2</th>
-                            <th>Datetime</th>
-                            <th>Actions</th>
+                            <th>Jadwal</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Yanto</td>
-                            <td>Mukidi</td>
-                            <td><?= date("Y-m-d H:i:s") ?></td>
-                            <td>
-                                <div class="f-actions">
-                                    <a href="admin-edit.php">
-                                        <img src="./assets/images/svgs/edit.svg" alt="">
-                                    </a>
-                                    <a href="admin-delete.php">
-                                        <img src="./assets/images/svgs/delete.svg" alt="">
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php if (!$res) : ?>
+                            <tr>
+                                <td colspan="5">Tidak ada jadwal</td>
+                            </tr>
+                        <?php else : ?>
+                            <?php $counter = 1 ?>
+                            <?php while ($row = mysqli_fetch_assoc($res)) : ?>
+                                <tr>
+                                    <td><?= $counter ?></td>
+                                    <td><?= $row["player1"] ?></td>
+                                    <td><?= $row["player2"] ?></td>
+                                    <td><?= $row["waktu"] ?></td>
+                                    <td>
+                                        <div class="f-actions">
+                                            <a href="admin-edit.php?id=<?= $row["id"] ?>">
+                                                <img src="./assets/images/svgs/edit.svg" alt="">
+                                            </a>
+                                            <a onclick="handleDelete(<?= $row['id'] ?>)">
+                                                <img src="./assets/images/svgs/delete.svg" alt="">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php $counter++ ?>
+                            <?php endwhile ?>
+                        <?php endif ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script>
+        function handleDelete(id) {
+            if (confirm("Apakah anda yakin??")) {
+                location.href = "admin-delete.php?id=" + id
+            }
+        }
+    </script>
 </body>
 
 </html>

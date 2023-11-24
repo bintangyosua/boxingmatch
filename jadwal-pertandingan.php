@@ -1,3 +1,22 @@
+<?php
+
+require_once "auth.php";
+
+$sql = "SELECT
+  DATE(waktu) AS tanggal,
+  COUNT(*) AS jumlah_data,
+  GROUP_CONCAT(player1) AS daftar_player1,
+  GROUP_CONCAT(player2) AS daftar_player2,
+  GROUP_CONCAT(TIME(waktu)) AS waktu
+FROM jadwal
+GROUP BY tanggal ORDER BY tanggal ASC";
+
+$res = runQuery($sql);
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,33 +42,44 @@
         <h1>Jadwal Pertandingan</h1>
         <hr />
         <div class="cards">
-            <?php for ($i = 0; $i < 3; $i++) { ?>
+            <?php while ($data = $res->fetch_assoc()) : ?>
                 <div class="card">
                     <div class="card-main">
                         <!-- Card Header -->
                         <div class="card-header">
-                            <h2>Sun, 18 November 2023</h2>
+                            <h2><?= date('D, j F Y', strtotime($data["tanggal"])) ?></h2>
                             <img src="./assets/images/galang-boxing.png" height="45px" alt="">
                         </div>
                         <!-- Card VS Player -->
-                        <div class="card-body">
-                            <div class="player-1 player">
-                                <span>Player 1</span>
-                                <img src="./assets/images/svgs/circle.svg" class="card-profile" alt="">
+                        <?php
+                        $length = $data["jumlah_data"];
+                        $players1 = explode(",", $data["daftar_player1"]);
+                        $players2 = explode(",", $data["daftar_player2"]);
+                        $waktu = explode(",", $data["waktu"]);
+                        ?>
+                        <?php for ($i = 0; $i < $length; $i++) : ?>
+                            <div class="card-body">
+                                <div class="player-1 player">
+                                    <span><?= $players1[$i] ?></span>
+                                    <img src="./assets/images/profile-1.png" class="card-profile" alt="">
+                                </div>
+                                <div class="card-vs">VS</div>
+                                <div class="player-2 player">
+                                    <img src="./assets/images/profile-2.png" class="card-profile" alt="">
+                                    <span><?= $players2[$i] ?></span>
+                                </div>
                             </div>
-                            <div class="card-vs">VS</div>
-                            <div class="player-2 player">
-                                <img src="./assets/images/svgs/circle.svg" class="card-profile" alt="">
-                                <span>Player 2</span>
+                            <!-- Card Footer (time schedule) -->
+                            <div class="card-footer">
+                                <div class="card-time"><?= date('H:i', strtotime($waktu[$i])) ?></div>
                             </div>
-                        </div>
-                        <!-- Card Footer (time schedule) -->
-                        <div class="card-footer">
-                            <div class="card-time">19:00</div>
-                        </div>
+                            <?php if ($i < $length - 1) : ?>
+                                <hr style="margin: 30px 0;">
+                            <?php endif ?>
+                        <?php endfor ?>
                     </div>
                 </div>
-            <?php } ?>
+            <?php endwhile ?>
         </div>
     </section>
     <footer>
