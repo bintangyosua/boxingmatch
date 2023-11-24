@@ -27,7 +27,8 @@ a {
   flex-direction: column;
   gap: 10px;
   opacity: 0.9;
-  max-width: 1009px;
+  max-width: 800px;
+  width: 100%;
 }
 
 .card-header {
@@ -110,6 +111,7 @@ td {
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   padding: 30px 70px;
 }
@@ -118,13 +120,21 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
 
   & label {
     width: 25%;
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  & span {
+    width: 3%;
+    font-weight: 600;
   }
 
   & input {
-    width: 70%;
+    width: 60%;
   }
 }
 

@@ -38,6 +38,16 @@ a:hover {
   cursor: pointer;
 }
 
+.error-message {
+  display: grid;
+  place-items: center;
+
+  & .error-text {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
 button {
   border: none;
   padding: 10px 17px;
