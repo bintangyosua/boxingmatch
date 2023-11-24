@@ -21,24 +21,55 @@ a {
   height: fit-content;
   width: max-content;
   background-color: #cd2e2e;
-  padding: 20px;
+  padding: 30px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   opacity: 0.9;
+  max-width: 1009px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .new-schedule {
   display: inline-flex;
-  background-color: green;
+  background-color: white;
   width: fit-content;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+
+  & span {
+    font-size: 18px;
+    display: inline-flex;
+    color: #cd2e2e;
+    font-weight: 800;
+  }
+}
+
+.divider {
+  margin: 20px 0;
 }
 
 .back-schedules {
   display: inline-flex;
   background-color: teal;
   width: fit-content;
+}
+
+.schedules-wrapper {
+  background-color: white;
+  padding: 30px;
+  border-radius: 30px;
+
+  & * {
+    color: #ea3a3a;
+  }
 }
 
 .schedules {
@@ -53,7 +84,7 @@ th,
 td {
   padding: 10px 15px;
   border-collapse: collapse;
-  border: solid white 1px;
+  border: solid #ea3a3a 1px;
   text-align: center;
 }
 
@@ -63,7 +94,7 @@ td {
 }
 
 .btn-edit {
-  background-color: green;
+  /* background-color: green; */
 }
 
 .btn-delete {
@@ -71,15 +102,16 @@ td {
 }
 
 .f-actions {
-  display: flex;
+  height: 100%;
   justify-content: center;
   gap: 5px;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 30px 70px;
 }
 
 .row {
@@ -98,4 +130,7 @@ form {
 
 input[type="submit"]:hover {
   cursor: pointer;
+}
+
+.datetime-input {
 }

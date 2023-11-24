@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Create</title>
+    <title>Admin - Edit</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/admin.css">
 </head>
@@ -13,28 +13,33 @@
     <?php include "./components/Navbar.php" ?>
     <div class="container">
         <div class="card">
-            <h1>Edit Schedule</h1>
-            <a href="admin-jadwal.php">
-                <button class="back-schedules">Back to Schedules</button>
-            </a>
-            <form action="" class="form">
-                <div class="row">
-                    <label for="">Player 1</label>
-                    <span>:</span>
-                    <input type="text" name="" id="">
+            <form action="">
+                <div class="card-header">
+                    <h1>Edit Jadwal</h1>
+                    <a href="admin-jadwal.php">
+                        <button class="new-schedule" type="submit">
+                            <img src="./assets/images/svgs/plus.svg" alt="">
+                            <span>Simpan</span>
+                        </button>
+                    </a>
                 </div>
-                <div class="row">
-                    <label for="">Player 2</label>
-                    <span>:</span>
-                    <input type="text" name="" id="">
-                </div>
-                <div class="row">
-                    <label for="">Datetime</label>
-                    <span>:</span>
-                    <input type="datetime-local" name="" id="">
-                </div>
-                <div class="row">
-                    <input type="submit" value="Edit">
+                <hr class="divider">
+                <div class="form">
+                    <div class="row">
+                        <label for="">Player 1</label>
+                        <span>:</span>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="row">
+                        <label for="">Player 2</label>
+                        <span>:</span>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="row">
+                        <label for="">Datetime</label>
+                        <span>:</span>
+                        <input type="datetime-local" class="datetime-input" name="" id="">
+                    </div>
                 </div>
             </form>
         </div>
