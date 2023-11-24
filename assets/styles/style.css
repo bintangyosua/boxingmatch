@@ -30,7 +30,7 @@ body::after {
 }
 
 a {
-  /* all: unset; */
+  all: unset;
   text-decoration: none;
 }
 
@@ -40,8 +40,12 @@ a:hover {
 
 button {
   border: none;
-  padding: 5px 17px;
+  padding: 10px 17px;
   border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 hr {
@@ -50,7 +54,18 @@ hr {
   height: 2px;
 }
 
-input[type="text"] {
+/* input[type="text"] {
+  padding: 10px 10px;
+  color: white;
+  background-color: #a22a2a;
+  border: solid white 1px;
+  border-radius: 10px;
+  outline: none;
+  margin-inline: 5px;
+  font-size: 20px;
+} */
+
+input {
   padding: 10px 10px;
   color: white;
   background-color: #a22a2a;

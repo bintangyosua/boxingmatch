@@ -12,6 +12,7 @@
 <body>
     <?php include "./components/NavbarAuth.php" ?>
     <section class="main">
+        <!-- Login Card -->
         <div class="card">
             <h1>LOGIN</h1>
             <hr />
