@@ -14,11 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
+        echo "masuk sini";
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['yourname'] = $row['yourname'];
         header("Location: dashboard.php");
-        exit();
+        // exit();
     } else {
         $error = "Username atau password salah";
     }

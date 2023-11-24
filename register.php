@@ -1,3 +1,29 @@
+<?php
+include 'koneksi.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST["lastname"];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm_password'];
+
+
+    if ($password !== $confirmPassword) {
+        $error = "Password tidak cocok";
+    } else {
+        $query = "INSERT INTO akun (firstname, lastname, username, email,  password) VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
+        if ($conn->query($query) === true) {
+            header("Location: login.php");
+            exit();
+        } else {
+            $error = "Gagal melakukan registrasi";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,61 +41,63 @@
         <div class="card">
             <h1>REGISTRASI</h1>
             <hr />
-            <div class="input-field">
-                <div class="input-row">
-                    <div class="input-label">
-                        <span>
-                            <img src="./assets/images/svgs/profile.svg" width="20px" alt="">
-                            <span>Your name</span>
-                        </span>
+            <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
+                <div class="input-field">
+                    <div class="input-row">
+                        <div class="input-label">
+                            <span>
+                                <img src="./assets/images/svgs/profile.svg" width="20px" alt="">
+                                <span>Your name</span>
+                            </span>
+                        </div>
+                        <div class="input-colon">:</div>
+                        <div class="input-data input-data-name">
+                            <input type="text" name="firstname" id="" placeholder="First Name" required>
+                            <input type="text" name="lastname" id="" placeholder="Last Name" required>
+                        </div>
                     </div>
-                    <div class="input-colon">:</div>
-                    <div class="input-data input-data-name">
-                        <input type="text" name="" id="" placeholder="First Name">
-                        <input type="text" name="" id="" placeholder="Last Name">
+                    <div class="input-row">
+                        <div class="input-label">
+                            <span>
+                                <img src="./assets/images/svgs/username.svg" width="20px" alt="">
+                                <span>Username</span>
+                            </span>
+                        </div>
+                        <div class="input-colon">:</div>
+                        <div class="input-data">
+                            <input type="text" name="username" id="" placeholder="Input username" required>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-label">
+                            <span>
+                                <img src="./assets/images/svgs/email.svg" width="20px" alt="">
+                                <span>Email</span>
+                            </span>
+                        </div>
+                        <div class="input-colon">:</div>
+                        <div class="input-data">
+                            <input type="email" name="email" id="" placeholder="Input email" required>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-label">
+                            <span>
+                                <img src="./assets/images/svgs/password.svg" width="20px" alt="">
+                                <span>Password</span>
+                            </span>
+                        </div>
+                        <div class="input-colon">:</div>
+                        <div class="input-data input-data-password">
+                            <input type="password" name="password" id="" placeholder="Input password" required>
+                            <input type="password" name="confirm_password" id="" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+                    <div class="input-row submit">
+                        <button type="submit">Register</button>
                     </div>
                 </div>
-                <div class="input-row">
-                    <div class="input-label">
-                        <span>
-                            <img src="./assets/images/svgs/username.svg" width="20px" alt="">
-                            <span>Username</span>
-                        </span>
-                    </div>
-                    <div class="input-colon">:</div>
-                    <div class="input-data">
-                        <input type="text" name="" id="" placeholder="Input username">
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-label">
-                        <span>
-                            <img src="./assets/images/svgs/email.svg" width="20px" alt="">
-                            <span>Email</span>
-                        </span>
-                    </div>
-                    <div class="input-colon">:</div>
-                    <div class="input-data">
-                        <input type="text" name="" id="" placeholder="Input email">
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-label">
-                        <span>
-                            <img src="./assets/images/svgs/password.svg" width="20px" alt="">
-                            <span>Password</span>
-                        </span>
-                    </div>
-                    <div class="input-colon">:</div>
-                    <div class="input-data input-data-password">
-                        <input type="text" name="" id="" placeholder="Input password">
-                        <input type="text" name="" id="" placeholder="Confirm your password">
-                    </div>
-                </div>
-                <div class="input-row submit">
-                    <button>Register</button>
-                </div>
-            </div>
+            </form>
         </div>
         <div>Sudah punya akun? <a href="login.php"><b>Masuk Disini !</b></a></div>
     </section>

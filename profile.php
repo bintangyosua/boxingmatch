@@ -1,3 +1,13 @@
+<?php
+include "./auth.php";
+
+if (!isLoggedIn()) header("Location: login.php");
+
+$username = $_SESSION["username"];
+$res = runQuery("SELECT * FROM akun WHERE username = '$username'");
+$data = $res->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,17 +24,17 @@
   <div class="bg-img">
     <div class="card">
       <img src="./assets/images/profile.jpeg" alt="" class="card-img">
-      <h2 class="profile-name">Gilang</h2>
+      <h2 class="profile-name" style="font-weight: 700;"><?= $data["firstname"] . " " . $data["lastname"] ?></h2>
       <div class="main-card">
         <div class="row">
           <div class="label">Username</div>
           <div>:</div>
-          <div class="value">gilanggg</div>
+          <div class="value"><?= $data["username"] ?></div>
         </div>
         <div class="row">
           <div class="label">Email</div>
           <div>:</div>
-          <div class="value">gilang@gg.com</div>
+          <div class="value"><?= $data["email"] ?></div>
         </div>
         <div class="row">
           <div class="label">Password</div>
@@ -38,11 +48,19 @@
           <button class="edit">edit profile</button>
         </a>
         <a href="#">
-          <button class="hapus">hapus akun</button>
+          <button class="hapus" onclick="confirmDelete()">hapus akun</button>
         </a>
       </div>
     </div>
   </div>
+
+  <script>
+    function confirmDelete() {
+      if (confirm("Apakah kamu yakinnn??")) {
+        location.href = 'delete-akun.php';
+      }
+    }
+  </script>
 </body>
 
 

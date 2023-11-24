@@ -2,7 +2,7 @@
 include 'auth.php';
 include 'koneksi.php';
 
-checkLogin();
+// checkLogin();
 
 $query = "SELECT schedule.id, pertandingan.nama, schedule.tanggal FROM schedule JOIN pertandingan ON schedule.pertandingan_id = pertandingan.id";
 $result = $conn->query($query);
