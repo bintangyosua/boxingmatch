@@ -5,8 +5,8 @@ require_once "auth.php";
 $sql = "SELECT
   DATE(waktu) AS tanggal,
   COUNT(*) AS jumlah_data,
-  GROUP_CONCAT(player1) AS daftar_player1,
-  GROUP_CONCAT(player2) AS daftar_player2,
+  GROUP_CONCAT(player1_id) AS daftar_player1,
+  GROUP_CONCAT(player2_id) AS daftar_player2,
   GROUP_CONCAT(TIME(waktu)) AS waktu
 FROM jadwal
 GROUP BY tanggal ORDER BY tanggal ASC";

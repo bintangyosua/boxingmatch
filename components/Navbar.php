@@ -10,15 +10,24 @@ include_once "./auth.php";
         padding: 10px 0 25px 0;
         /* display: flex; */
         /* justify-content: center; */
-        height: 3%;
     }
 
     .nav-container {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        margin: auto;
-        max-width: 1000px;
+        justify-content: center;
+
+
+        @media (min-width: 709px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+            max-width: 1000px;
+            flex-wrap: wrap;
+        }
     }
 
     .galang-boxing {
@@ -30,6 +39,7 @@ include_once "./auth.php";
         text-decoration: inherit;
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
 
         & .nav-item {
             display: flex;
@@ -84,7 +94,7 @@ include_once "./auth.php";
                 </a>
             <?php endif ?>
             <?php if (isAdmin()) : ?>
-                <a href="admin-jadwal.php" class="nav-item">
+                <a href="admin.php" class="nav-item">
                     <img src="./assets/images/svgs/username.svg" width="24px" class="logo" alt="">
                     <span>Admin</span>
                 </a>

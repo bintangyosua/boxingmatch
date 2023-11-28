@@ -1,8 +1,10 @@
 body {
-  background-image: url("../images/bg2-grayscale.jpg");
+  background: rgba(0, 0, 0, 0.5) url("../images/bg2-grayscale.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  margin: 0; /* Reset margin to ensure full coverage of the body */
+  background-blend-mode: darken;
 }
 
 a {
@@ -94,10 +96,6 @@ td {
   padding: 5px 10px;
 }
 
-.btn-edit {
-  /* background-color: green; */
-}
-
 .btn-delete {
   background-color: red;
 }
@@ -142,5 +140,6 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.datetime-input {
+.title {
+  text-align: center;
 }
