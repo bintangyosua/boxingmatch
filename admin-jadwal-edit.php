@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
     $waktu = $_POST["waktu"];
     $kode_ruangan = $_POST["kode_ruangan"];
 
-    $is_waktu_pemain_sama = runQuery("SELECT * from jadwal WHERE waktu = '$waktu' AND ((player1_id = '$player1_id' AND player2_id = '$player2_id') OR (player1_id = '$player2_id' AND player2_id = '$player1_id'))");
+    $is_waktu_pemain_sama = runQuery("SELECT * from jadwal WHERE waktu = '$waktu' AND ((player1_id = '$player1_id' AND player2_id = '$player2_id') OR (player1_id = '$player2_id' AND player2_id = '$player1_id')) AND waktu != '$row_jadwal[waktu]'");
     $is_there_waktu_ruangan = runQuery("SELECT waktu, kode_ruangan FROM jadwal WHERE waktu = '$waktu' AND kode_ruangan = '$kode_ruangan' AND id != '$id'");
 
     if ($player1_id === $player2_id) {
