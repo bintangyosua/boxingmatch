@@ -17,6 +17,7 @@ if (!isAdmin()) header("Location: index.php");
         .card-body {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 7px;
             margin-top: 5px;
         }
