@@ -53,7 +53,7 @@ $res = runQuery("SELECT * FROM ruangan");
                                     <td><?= $row["nama"] ?></td>
                                     <td>
                                         <div class="f-actions">
-                                            <a href="admin-ruangan-edit.php?id=<?= $row["kode"] ?>">
+                                            <a href="admin-ruangan-edit.php?kode=<?= $row["kode"] ?>">
                                                 <img src="./assets/images/svgs/edit.svg" alt="">
                                             </a>
                                             <a onclick="handleDelete('<?= $row['kode'] ?>')">
@@ -70,6 +70,13 @@ $res = runQuery("SELECT * FROM ruangan");
             </div>
         </div>
     </div>
+    <script>
+        function handleDelete(kode) {
+            if (confirm("Apakah anda yakin??")) {
+                location.href = "admin-ruangan-delete.php?kode=" + kode
+            }
+        }
+    </script>
 </body>
 
 </html>
