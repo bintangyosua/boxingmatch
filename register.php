@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="input-colon">:</div>
                         <div class="input-data input-data-name">
-                            <input type="text" name="firstname" id="" placeholder="First Name" required>
-                            <input type="text" name="lastname" id="" placeholder="Last Name" required>
+                            <input type="text" name="firstname" id="" placeholder="First Name" required pattern="[a-z A-Z]+$" title="Hanya huruf">
+                            <input type="text" name="lastname" id="" placeholder="Last Name" required pattern="[a-z A-Z]+$" title="Hanya huruf">
                         </div>
                     </div>
                     <div class="input-row">
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="input-colon">:</div>
                         <div class="input-data">
-                            <input type="text" name="username" id="" placeholder="Input username" required>
+                            <input type="text" name="username" id="" placeholder="Input username" required pattern="[a-z0-9]+$" title="Hanya huruf kecil dan angka">
                         </div>
                     </div>
                     <div class="input-row">

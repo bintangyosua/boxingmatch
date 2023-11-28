@@ -51,17 +51,17 @@ if (isset($_POST["submit"])) {
                     <div class="row">
                         <label for="">Nama</label>
                         <span>:</span>
-                        <input type="text" name="nama" value="<?= $old_data['nama'] ?>">
+                        <input type="text" name="nama" value="<?= $old_data['nama'] ?>" pattern="[a-z A-Z]+$" title="Hanya huruf dan angka">
                     </div>
                     <div class="row">
                         <label for="">Umur</label>
                         <span>:</span>
-                        <input type="number" name="umur" value="<?= $old_data['umur'] ?>">
+                        <input type="number" name="umur" value="<?= $old_data['umur'] ?>" pattern="[0-9]+$" title="Hanya angka">
                     </div>
                     <div class="row">
                         <label for="">Kota</label>
                         <span>:</span>
-                        <input type="text" name="kota" required value="<?= $old_data['kota'] ?>">
+                        <input type="text" name="kota" required value="<?= $old_data['kota'] ?>" pattern="[a-z A-Z]+$" title="Hanya huruf">
                     </div>
                 </div>
             </form>
