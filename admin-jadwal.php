@@ -93,7 +93,7 @@ $res_jadwal = runQuery("SELECT jadwal.* FROM jadwal ORDER BY waktu ASC");
     <script>
         function handleDelete(id) {
             if (confirm("Apakah anda yakin??")) {
-                location.href = "admin-delete.php?id=" + id
+                location.href = "admin-jadwal-delete.php?id=" + id
             }
         }
     </script>

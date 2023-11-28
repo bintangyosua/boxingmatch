@@ -32,7 +32,7 @@ if (isset($_POST["simpan"])) {
         }
 
         if (runQuery($sql)) {
-            header("Location: edit-profile.php");
+            header("Location: profile.php");
             exit();
         } else {
             $error = "Gagal melakukan update profile";
@@ -74,8 +74,8 @@ if (isset($_POST["simpan"])) {
                         </div>
                         <div class="input-colon">:</div>
                         <div class="input-data input-data-name">
-                            <input type="text" name="firstname" id="" placeholder="First Name" value="<?= $data["firstname"] ?>">
-                            <input type="text" name="lastname" id="" placeholder="Last Name" value="<?= $data["lastname"] ?>">
+                            <input type="text" name="firstname" id="" placeholder="First Name" value="<?= $data["firstname"] ?>" pattern="[a-z A-Z]+$" title="Hanya huruf" required>
+                            <input type="text" name="lastname" id="" placeholder="Last Name" value="<?= $data["lastname"] ?>" pattern="[a-z A-Z]+$" title="Hanya huruf" required>
                         </div>
                     </div>
                     <div class="input-row">
@@ -87,7 +87,7 @@ if (isset($_POST["simpan"])) {
                         </div>
                         <div class="input-colon">:</div>
                         <div class="input-data">
-                            <input type="text" name="username" id="" placeholder="Input username" value="<?= $data["username"] ?>">
+                            <input type="text" name="username" id="" placeholder="Input username" value="<?= $data["username"] ?>" required pattern="[a-z0-9]+$" title="Hanya huruf kecil dan angka">
                         </div>
                     </div>
                     <div class="input-row">

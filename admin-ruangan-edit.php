@@ -54,12 +54,12 @@ if (isset($_POST["submit"])) {
                     <div class="row">
                         <label for="">Kode</label>
                         <span>:</span>
-                        <input type="text" name="kode" value="<?= $row["kode"] ?>">
+                        <input type="text" name="kode" value="<?= $row["kode"] ?>" pattern="[A-Z0-9]+$" title="Hanya huruf besar dan angka">
                     </div>
                     <div class="row">
                         <label for="">Nama</label>
                         <span>:</span>
-                        <input type="text" name="nama" value="<?= $row["nama"] ?>">
+                        <input type="text" name="nama" value="<?= $row["nama"] ?>" pattern="[A-Z a-z 0-9]+$" title="Hanya huruf dan angka">
                     </div>
                 </div>
             </form>
