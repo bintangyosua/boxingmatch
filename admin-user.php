@@ -70,10 +70,6 @@ $res = runQuery("SELECT * FROM akun");
         </div>
     </div>
     <script>
-        function test() {
-            console.log("test");
-        }
-
         function handleDelete(username) {
             if (confirm("Apakah anda yakin??")) {
                 location.href = "admin-user-delete.php?username=" + username
