@@ -1,6 +1,7 @@
 <?php
 require_once "auth.php";
 
+if (!isAdmin()) header("Location: login.php");
 $pemain1 = runQuery("SELECT * FROM pemain");
 $pemain2 = runQuery("SELECT * FROM pemain");
 $ruangan = runQuery("SELECT * FROM ruangan");

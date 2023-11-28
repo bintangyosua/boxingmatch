@@ -1,6 +1,7 @@
 <?php
 
 require_once "./auth.php";
+if (!isAdmin()) header("Location: login.php");
 
 $res = runQuery("SELECT * FROM akun");
 
