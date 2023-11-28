@@ -55,7 +55,7 @@ if (isset($_POST["submit"])) {
                     <div class="row">
                         <label for="">Kode</label>
                         <span>:</span>
-                        <input type="text" name="kode" value="<?= $row["kode"] ?>" pattern="[A-Z0-9]+$" title="Hanya huruf besar dan angka">
+                        <input type="text" name="kode" value="<?= $row["kode"] ?>" pattern="[A-Z0-9]+$" title="Hanya huruf kapital dan angka tanpa spasi">
                     </div>
                     <div class="row">
                         <label for="">Nama</label>

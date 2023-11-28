@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="input-colon">:</div>
                         <div class="input-data">
-                            <input type="text" name="username" id="" placeholder="Input username" required pattern="[a-z0-9]+$" title="Hanya huruf kecil dan angka">
+                            <input type="text" name="username" id="" placeholder="Input username" required pattern="[a-z0-9]+$" title="Hanya huruf kecil dan angka tanpa spasi">
                         </div>
                     </div>
                     <div class="input-row">

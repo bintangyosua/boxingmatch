@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
                     <div class="row">
                         <label for="">Nama</label>
                         <span>:</span>
-                        <input type="text" name="nama" value="<?= $old_data['nama'] ?>" pattern="[a-z A-Z]+$" title="Hanya huruf dan angka">
+                        <input type="text" name="nama" value="<?= $old_data['nama'] ?>" pattern="[a-z A-Z]+$" title="Hanya huruf">
                     </div>
                     <div class="row">
                         <label for="">Umur</label>
