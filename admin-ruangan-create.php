@@ -1,6 +1,7 @@
 <?php
 require_once "./auth.php";
 
+if (!isAdmin()) header("Location: login.php");
 if (isset($_POST["submit"])) {
     $kode = $_POST["kode"];
     $nama = $_POST["nama"];

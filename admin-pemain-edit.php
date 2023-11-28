@@ -1,5 +1,6 @@
 <?php
 require_once "./auth.php";
+if (!isAdmin()) header("Location: login.php");
 
 $id = $_GET["id"];
 $res = runQuery("SELECT * FROM pemain WHERE id = " . $id);

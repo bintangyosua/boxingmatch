@@ -1,3 +1,9 @@
+<?php
+include "auth.php";
+
+if (!isAdmin()) header("Location: index.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

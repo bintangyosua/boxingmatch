@@ -1,5 +1,6 @@
 <?php
 require_once "./auth.php";
+if (!isAdmin()) header("Location: login.php");
 
 $old_kode = $_GET["kode"];
 $res = runQuery("SELECT * FROM ruangan WHERE kode = '$old_kode'");

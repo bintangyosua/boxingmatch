@@ -1,6 +1,7 @@
 <?php
 require_once "./auth.php";
 
+if (!isAdmin()) header("Location: login.php");
 $username = $_GET['username'];
 $res = runQuery("SELECT * FROM akun WHERE username = '$username'");
 $row = mysqli_fetch_assoc($res);

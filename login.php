@@ -4,8 +4,6 @@ include_once 'koneksi.php';
 
 if (isLoggedIn()) {
     header("Location: index.php");
-    echo "<h1>Udah Login</h1>";
-    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
