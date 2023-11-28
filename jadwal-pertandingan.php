@@ -34,6 +34,12 @@ if (isset($_POST["beli"]) and !$_SESSION["username"]) {
         runQuery("INSERT INTO tiket (akun_username, jadwal_id) VALUES ('$akun_username', '$jadwal_id')");
         echo "<script>alert('Tiket berhasil dibeli')</script>";
     }
+} else if (isset($_POST["refund"])) {
+    $username = $_POST["username"];
+    $jadwal_id = $_POST["jadwal_id"];
+
+    runQuery("DELETE FROM tiket WHERE akun_username = '$username' AND jadwal_id = '$jadwal_id'");
+    echo "<script>alert('Tiket berhasil direfund')</script>";
 }
 
 ?>
@@ -108,12 +114,17 @@ if (isset($_POST["beli"]) and !$_SESSION["username"]) {
                                     <div class="card-time"><?= date('H:i', strtotime($waktu[$i])) ?></div>
                                     <div class="card-time"><?= $ruangans[$i] ?></div>
                                 </div>
-                                <div style="margin: 5px 0;">
+                                <div style="margin: 5px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center;">
                                     <?php if (isset($_SESSION['username'])) : ?>
                                         <?php $is_bought = runQuery("SELECT * FROM tiket WHERE akun_username = '$_SESSION[username]' AND jadwal_id = '$jadwal_ids[$i]'")->num_rows > 0 ? true : false ?>
                                     <?php endif ?>
                                     <?php if ($is_bought) : ?>
                                         <button>Sudah dibeli</button>
+                                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
+                                            <input type="hidden" name="jadwal_id" value="<?= $jadwal_ids[$i] ?>">
+                                            <input type="hidden" name="username" value="<?= $_SESSION["username"] ?? '' ?>">
+                                            <button style="background-color: darkcyan; color: white;" name="refund">Refund</button>
+                                        </form>
                                     <?php else : ?>
                                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                                             <input type="hidden" name="jadwal_id" value="<?= $jadwal_ids[$i] ?>">
@@ -121,6 +132,7 @@ if (isset($_POST["beli"]) and !$_SESSION["username"]) {
                                             <button style="background-color: darkcyan; color: white;" name="beli">Beli Tiket</button>
                                         </form>
                                     <?php endif ?>
+
                                 </div>
                             </div>
                             <?php if ($i < $length - 1) : ?>

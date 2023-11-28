@@ -39,6 +39,7 @@ include_once "./auth.php";
         text-decoration: inherit;
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-wrap: wrap;
 
         & .nav-item {
