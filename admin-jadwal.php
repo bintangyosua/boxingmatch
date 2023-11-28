@@ -4,6 +4,9 @@ require_once "auth.php";
 if (!isAdmin()) header("Location: index.php");
 
 $res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
+$res_jadwal = runQuery("SELECT jadwal.* FROM jadwal ORDER BY waktu ASC");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +42,7 @@ $res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
                             <th>Player 1</th>
                             <th>Player 2</th>
                             <th>Jadwal</th>
+                            <th>Kode Ruangan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -49,18 +53,29 @@ $res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
                             </tr>
                         <?php else : ?>
                             <?php $counter = 1 ?>
-                            <?php while ($row = mysqli_fetch_assoc($res)) : ?>
+                            <?php while ($row_jadwal = mysqli_fetch_assoc($res_jadwal)) : ?>
                                 <tr>
                                     <td><?= $counter ?></td>
-                                    <td><?= $row["player1_id"] ?></td>
-                                    <td><?= $row["player2_id"] ?></td>
-                                    <td><?= $row["waktu"] ?></td>
+                                    <?php $res_pemain1 = runQuery("SELECT * FROM pemain"); ?>
+                                    <?php while ($row_pemain = mysqli_fetch_assoc($res_pemain1)) : ?>
+                                        <?php if ($row_jadwal["player1_id"] === $row_pemain["id"]) : ?>
+                                            <td><?= $row_pemain["nama"] ?></td>
+                                        <?php endif ?>
+                                    <?php endwhile ?>
+                                    <?php $res_pemain2 = runQuery("SELECT * FROM pemain"); ?>
+                                    <?php while ($row_pemain = mysqli_fetch_assoc($res_pemain2)) : ?>
+                                        <?php if ($row_jadwal["player2_id"] === $row_pemain["id"]) : ?>
+                                            <td><?= $row_pemain["nama"] ?></td>
+                                        <?php endif ?>
+                                    <?php endwhile ?>
+                                    <td><?= $row_jadwal["waktu"] ?></td>
+                                    <td><?= $row_jadwal["kode_ruangan"] ?></td>
                                     <td>
                                         <div class="f-actions">
-                                            <a href="admin-edit.php?id=<?= $row["id"] ?>">
+                                            <a href="admin-jadwal-edit.php?id=<?= $row_jadwal["id"] ?>">
                                                 <img src="./assets/images/svgs/edit.svg" alt="">
                                             </a>
-                                            <a onclick="handleDelete(<?= $row['id'] ?>)">
+                                            <a onclick="handleDelete('<?= $row_jadwal['id'] ?>')">
                                                 <img src="./assets/images/svgs/delete.svg" alt="">
                                             </a>
                                         </div>

@@ -5,9 +5,12 @@ $pemain1 = runQuery("SELECT * FROM pemain");
 $pemain2 = runQuery("SELECT * FROM pemain");
 $ruangan = runQuery("SELECT * FROM ruangan");
 
-if (!isAdmin()) header("Location: index.php");
+$id = $_GET["id"];
 
-$today = date("Y-m-d H:i");
+$res_jadwal = runQuery("SELECT * FROM jadwal WHERE id = " . $id);
+$row_jadwal = mysqli_fetch_assoc($res_jadwal);
+
+if (!isAdmin()) header("Location: index.php");
 
 if (isset($_POST["submit"])) {
     $player1_id = $_POST["player1_id"];
@@ -15,9 +18,8 @@ if (isset($_POST["submit"])) {
     $waktu = $_POST["waktu"];
     $kode_ruangan = $_POST["kode_ruangan"];
 
-
     $is_waktu_pemain_sama = runQuery("SELECT * from jadwal WHERE waktu = '$waktu' AND ((player1_id = '$player1_id' AND player2_id = '$player2_id') OR (player1_id = '$player2_id' AND player2_id = '$player1_id'))");
-    $is_there_waktu_ruangan = runQuery("SELECT waktu, kode_ruangan FROM jadwal WHERE waktu = '$waktu' AND kode_ruangan = '$kode_ruangan'");
+    $is_there_waktu_ruangan = runQuery("SELECT waktu, kode_ruangan FROM jadwal WHERE waktu = '$waktu' AND kode_ruangan = '$kode_ruangan' AND id != '$id'");
 
     if ($player1_id === $player2_id) {
         $error = "Pemain tidak boleh sama";
@@ -26,7 +28,8 @@ if (isset($_POST["submit"])) {
     } else if ($is_there_waktu_ruangan->num_rows > 0) {
         $error = "Jadwal dengan Ruangan yang sama sudah ada";
     } else {
-        $sql = "INSERT INTO jadwal (player1_id, player2_id, waktu, kode_ruangan) VALUES ('$player1_id', '$player2_id', '$waktu', '$kode_ruangan')";
+        $sql = "UPDATE jadwal SET player1_id = '$player1_id', player2_id = '$player2_id', waktu = '$waktu', kode_ruangan = '$kode_ruangan' WHERE id = $id";
+
         if (runQuery($sql)) {
             header("Location: admin-jadwal.php");
         } else {
@@ -42,7 +45,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Jadwal Create</title>
+    <title>Admin - Jadwal Edit</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/admin.css">
 </head>
@@ -53,11 +56,11 @@ if (isset($_POST["submit"])) {
         <div class="card">
             <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                 <div class="card-header">
-                    <h1>Tambah Jadwal</h1>
+                    <h1>Edit Jadwal</h1>
                     <a href="admin-jadwal.php">
                         <button class="new-schedule" type="submit" name="submit" value="submit">
                             <img src="./assets/images/svgs/plus.svg" alt="">
-                            <span>Tambah</span>
+                            <span>Simpan</span>
                         </button>
                     </a>
                 </div>
@@ -73,7 +76,7 @@ if (isset($_POST["submit"])) {
                         <span>:</span>
                         <select type="text" name="player1_id" id="" required>
                             <?php while ($row_pemain = mysqli_fetch_assoc($pemain1)) : ?>
-                                <?php if ($player1_id === $row_pemain['id']) : ?>
+                                <?php if ($row_jadwal["player1_id"] === $row_pemain["id"]) : ?>
                                     <option value="<?= $row_pemain['id'] ?>" selected><?= $row_pemain["nama"] ?></option>
                                 <?php else : ?>
                                     <option value="<?= $row_pemain['id'] ?>"><?= $row_pemain["nama"] ?></option>
@@ -86,26 +89,29 @@ if (isset($_POST["submit"])) {
                         <span>:</span>
                         <select type="text" name="player2_id" id="" required>
                             <?php while ($row_pemain = mysqli_fetch_assoc($pemain2)) : ?>
-                                <?php if ($player2_id === $row_pemain['id']) : ?>
+                                <?php if ($row_jadwal["player2_id"] === $row_pemain["id"]) : ?>
                                     <option value="<?= $row_pemain['id'] ?>" selected><?= $row_pemain["nama"] ?></option>
                                 <?php else : ?>
                                     <option value="<?= $row_pemain['id'] ?>"><?= $row_pemain["nama"] ?></option>
                                 <?php endif ?>
-
                             <?php endwhile ?>
                         </select>
                     </div>
                     <div class="row">
                         <label for="">Waktu</label>
                         <span>:</span>
-                        <input type="datetime-local" class="datetime-input" name="waktu" id="cal" value="<?= $today ?>" required>
+                        <input type="datetime-local" class="datetime-input" name="waktu" id="" required value="<?= $row_jadwal['waktu'] ?>">
                     </div>
                     <div class="row">
                         <label for="">Ruangan</label>
                         <span>:</span>
                         <select type="text" name="kode_ruangan" id="" required>
                             <?php while ($row_ruangan = mysqli_fetch_assoc($ruangan)) : ?>
-                                <option value="<?= $row_ruangan['kode'] ?>"><?= $row_ruangan['kode'] ?></option>
+                                <?php if ($row_ruangan["kode"] === $row_jadwal["kode_ruangan"]) : ?>
+                                    <option value="<?= $row_ruangan['kode'] ?>" selected><?= $row_ruangan['kode'] ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $row_ruangan['kode'] ?>"><?= $row_ruangan['kode'] ?></option>
+                                <?php endif ?>
                             <?php endwhile ?>
                         </select>
                     </div>
@@ -113,18 +119,6 @@ if (isset($_POST["submit"])) {
             </form>
         </div>
     </div>
-    <script>
-        window.addEventListener('load', () => {
-            var now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-
-            /* remove second/millisecond if needed - credit ref. https://stackoverflow.com/questions/24468518/html5-input-datetime-local-default-value-of-today-and-current-time#comment112871765_60884408 */
-            now.setMilliseconds(null)
-            now.setSeconds(null)
-
-            document.getElementById('cal').value = now.toISOString().slice(0, -1);
-        });
-    </script>
 </body>
 
 </html>
