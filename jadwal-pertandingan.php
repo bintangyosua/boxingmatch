@@ -110,9 +110,9 @@ if (isset($_POST["beli"]) and !$_SESSION["username"]) {
                                 </div>
                                 <div style="margin: 5px 0;">
                                     <?php if (isset($_SESSION['username'])) : ?>
-                                        <?php $is_bought = runQuery("SELECT * FROM tiket WHERE akun_username = '$_SESSION[username]' AND jadwal_id = '$jadwal_ids[$i]'")->num_rows > 0 ?>
+                                        <?php $is_bought = runQuery("SELECT * FROM tiket WHERE akun_username = '$_SESSION[username]' AND jadwal_id = '$jadwal_ids[$i]'")->num_rows > 0 ? true : false ?>
                                     <?php endif ?>
-                                    <?php if (isset($is_bought)) : ?>
+                                    <?php if ($is_bought) : ?>
                                         <button>Sudah dibeli</button>
                                     <?php else : ?>
                                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
