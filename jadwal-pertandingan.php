@@ -21,7 +21,10 @@ $res_jadwal = runQuery($sql);
 // }
 // exit;
 
-if (isset($_POST["beli"])) {
+if (isset($_POST["beli"]) and !$_SESSION["username"]) {
+    echo "<script>alert('Anda perlu login terlebih dahulu')</script>";
+    echo "<script>location.href = 'login.php'</script>";
+} else if (isset($_POST["beli"])) {
     $akun_username = $_POST["username"];
     $jadwal_id = $_POST["jadwal_id"];
 
@@ -106,13 +109,15 @@ if (isset($_POST["beli"])) {
                                     <div class="card-time"><?= $ruangans[$i] ?></div>
                                 </div>
                                 <div style="margin: 5px 0;">
-                                    <?php $is_bought = runQuery("SELECT * FROM tiket WHERE akun_username = '$_SESSION[username]' AND jadwal_id = '$jadwal_ids[$i]'")->num_rows > 0 ?>
-                                    <?php if ($is_bought) : ?>
+                                    <?php if (isset($_SESSION['username'])) : ?>
+                                        <?php $is_bought = runQuery("SELECT * FROM tiket WHERE akun_username = '$_SESSION[username]' AND jadwal_id = '$jadwal_ids[$i]'")->num_rows > 0 ?>
+                                    <?php endif ?>
+                                    <?php if (isset($is_bought)) : ?>
                                         <button>Sudah dibeli</button>
                                     <?php else : ?>
                                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                                             <input type="hidden" name="jadwal_id" value="<?= $jadwal_ids[$i] ?>">
-                                            <input type="hidden" name="username" value="<?= $_SESSION["username"] ?>">
+                                            <input type="hidden" name="username" value="<?= $_SESSION["username"] ?? '' ?>">
                                             <button style="background-color: darkcyan; color: white;" name="beli">Beli Tiket</button>
                                         </form>
                                     <?php endif ?>
