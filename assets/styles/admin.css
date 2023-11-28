@@ -134,6 +134,10 @@ td {
   & input {
     width: 60%;
   }
+
+  & select {
+    width: 60%;
+  }
 }
 
 input[type="submit"]:hover {

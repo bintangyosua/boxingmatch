@@ -3,6 +3,13 @@ session_start();
 
 require_once "koneksi.php";
 
+function print_array($arr)
+{
+    echo "<pre>";
+    print_r($arr);
+    echo "<pre>";
+}
+
 
 function isLoggedIn()
 {
