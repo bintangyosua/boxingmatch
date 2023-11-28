@@ -1,9 +1,9 @@
 <?php
-require_once "auth.php";
 
-if (!isAdmin()) header("Location: index.php");
+require_once "./auth.php";
 
-$res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
+$res = runQuery("SELECT * FROM akun");
+
 ?>
 
 <!DOCTYPE html>
@@ -12,23 +12,18 @@ $res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Jadwal</title>
+    <title>Admin - User</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/admin.css">
+
 </head>
 
 <body>
-    <?php include "./components/Navbar.php" ?>
+    <?php include_once "./components/Navbar.php" ?>
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Jadwal Pertandingan</h1>
-                <a href="admin-jadwal-create.php">
-                    <button class="new-schedule">
-                        <img src="./assets/images/svgs/plus.svg" alt="">
-                        <span>Tambah</span>
-                    </button>
-                </a>
+                <h1>Admin - User</h1>
             </div>
             <hr class="divider" />
             <div class="schedules-wrapper">
@@ -36,32 +31,32 @@ $res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Player 1</th>
-                            <th>Player 2</th>
-                            <th>Jadwal</th>
-                            <th>Aksi</th>
+                            <th>Username</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if (!$res) : ?>
                             <tr>
-                                <td colspan="5">Tidak ada jadwal</td>
+                                <td colspan="5">Tidak ada akun</td>
                             </tr>
                         <?php else : ?>
                             <?php $counter = 1 ?>
                             <?php while ($row = mysqli_fetch_assoc($res)) : ?>
                                 <tr>
                                     <td><?= $counter ?></td>
-                                    <td><?= $row["player1_id"] ?></td>
-                                    <td><?= $row["player2_id"] ?></td>
-                                    <td><?= $row["waktu"] ?></td>
+                                    <td><?= $row["username"] ?></td>
+                                    <td><?= $row["firstname"] . " " . $row["lastname"] ?></td>
+                                    <td><?= $row["email"] ?></td>
                                     <td>
                                         <div class="f-actions">
-                                            <a href="admin-edit.php?id=<?= $row["id"] ?>">
+                                            <a href="admin-user-edit.php?username=<?= $row["username"] ?>">
                                                 <img src="./assets/images/svgs/edit.svg" alt="">
                                             </a>
-                                            <a onclick="handleDelete(<?= $row['id'] ?>)">
-                                                <img src="./assets/images/svgs/delete.svg" alt="">
+                                            <a onclick="handleDelete('<?= $row['username'] ?>')">
+                                                <img src="./assets/images/svgs/delete.svg">
                                             </a>
                                         </div>
                                     </td>
@@ -74,11 +69,14 @@ $res = runQuery("SELECT * FROM jadwal ORDER BY waktu ASC");
             </div>
         </div>
     </div>
-
     <script>
-        function handleDelete(id) {
+        function test() {
+            console.log("test");
+        }
+
+        function handleDelete(username) {
             if (confirm("Apakah anda yakin??")) {
-                location.href = "admin-delete.php?id=" + id
+                location.href = "admin-user-delete.php?username=" + username
             }
         }
     </script>

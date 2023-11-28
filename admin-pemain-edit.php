@@ -1,26 +1,19 @@
 <?php
-require_once "auth.php";
+require_once "./auth.php";
 
-if (!isAdmin()) header("Location: index.php");
+$id = $_GET["id"];
+$res = runQuery("SELECT * FROM pemain WHERE id = " . $id);
+$old_data = mysqli_fetch_assoc($res);
 
 if (isset($_POST["submit"])) {
-    $player1 = $_POST["player1"];
-    $player2 = $_POST["player2"];
-    $waktu = $_POST["waktu"];
+    $nama = $_POST["nama"];
+    $umur = $_POST["umur"];
+    $kota = $_POST["kota"];
 
-    $is_there_waktu = runQuery("SELECT waktu FROM jadwal WHERE waktu = '$waktu'");
-
-    if ($is_there_waktu->num_rows > 0) {
-        $error = "Jadwal sudah ada";
-    } else {
-        $sql = "INSERT INTO jadwal (player1, player2, waktu) VALUES ('$player1', '$player2', '$waktu')";
-        if (runQuery($sql)) {
-            header("Location: admin-jadwal.php");
-        } else {
-            $error = "Gagal menambahkan jadwal";
-        }
-    }
+    runQuery("UPDATE pemain SET nama = '$nama', umur = '$umur', kota = '$kota' WHERE id = " . $id);
+    header("Location: admin-pemain.php");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,22 +22,22 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Create</title>
+    <title>Admin - Edit Pemain</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/admin.css">
 </head>
 
 <body>
-    <?php include "./components/Navbar.php" ?>
+    <?php require_once "./components/Navbar.php" ?>
     <div class="container">
         <div class="card">
             <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                 <div class="card-header">
-                    <h1>Tambah Jadwal</h1>
+                    <h1>Admin - Edit Pemain</h1>
                     <a href="admin-jadwal.php">
                         <button class="new-schedule" type="submit" name="submit" value="submit">
                             <img src="./assets/images/svgs/plus.svg" alt="">
-                            <span>Tambah</span>
+                            <span>Simpan</span>
                         </button>
                     </a>
                 </div>
@@ -56,19 +49,19 @@ if (isset($_POST["submit"])) {
                 <hr class="divider">
                 <div class="form">
                     <div class="row">
-                        <label for="">Player 1</label>
+                        <label for="">Nama</label>
                         <span>:</span>
-                        <input type="text" name="player1" id="" required>
+                        <input type="text" name="nama" value="<?= $old_data['nama'] ?>">
                     </div>
                     <div class="row">
-                        <label for="">Player 2</label>
+                        <label for="">Umur</label>
                         <span>:</span>
-                        <input type="text" name="player2" id="" required>
+                        <input type="number" name="umur" value="<?= $old_data['umur'] ?>">
                     </div>
                     <div class="row">
-                        <label for="">Waktu</label>
+                        <label for="">Kota</label>
                         <span>:</span>
-                        <input type="datetime-local" class="datetime-input" name="waktu" id="" required>
+                        <input type="text" name="kota" required value="<?= $old_data['kota'] ?>">
                     </div>
                 </div>
             </form>
